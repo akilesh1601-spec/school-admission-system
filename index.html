@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdmitSchool | School Admission System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="brand-icon">🎓</span><span>AdmitSchool</span></div>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="nav-link active" href="#dashboard" data-section="dashboard">▦ <span>Dashboard</span></a>
+      <a class="nav-link" href="#register" data-section="register">＋ <span>Student Registration</span></a>
+      <a class="nav-link" href="#applications" data-section="applications">▤ <span>Applications</span></a>
+      <a class="nav-link" href="#documents" data-section="documents">▧ <span>Documents</span></a>
+      <a class="nav-link" href="#review" data-section="review">✓ <span>Application Review</span></a>
+      <a class="nav-link" href="#exams" data-section="exams">✎ <span>Entrance Exams</span></a>
+      <a class="nav-link" href="#merit" data-section="merit">🏆 <span>Merit List</span></a>
+      <a class="nav-link" href="#admission" data-section="admission">🎉 <span>Admission</span></a>
+      <a class="nav-link" href="#fees" data-section="fees">₹ <span>Fee Management</span></a>
+      <a class="nav-link" href="#reports" data-section="reports">▥ <span>Reports</span></a>
+    </nav>
+    <div class="sidebar-footer">Frontend demo · No database</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-button" id="menuButton" aria-label="Toggle navigation">☰</button>
+      <div><p class="eyebrow">ADMISSIONS OFFICE</p><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><span class="status-pill"><span class="status-dot"></span> Demo mode</span><button class="avatar" title="Administrator">AD</button></div>
+    </header>
+
+    <section class="page-section active" id="dashboard">
+      <div class="welcome-card">
+        <div><p class="eyebrow light">ACADEMIC YEAR 2026–2027</p><h2>Welcome to AdmitSchool</h2><p>Manage applications, review documents, and track admissions in one place.</p><a class="button button-white" href="#register" data-go="register">＋ Register applicant</a></div>
+        <div class="welcome-art" aria-hidden="true">🎓</div>
+      </div>
+      <div class="stat-grid">
+        <article class="stat-card"><span class="stat-icon purple">▤</span><p>Total applications</p><strong id="statTotal">0</strong><small>All registered applicants</small></article>
+        <article class="stat-card"><span class="stat-icon orange">◷</span><p>Under review</p><strong id="statReview">0</strong><small>Awaiting a decision</small></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><p>Admitted</p><strong id="statAdmitted">0</strong><small>Confirmed applicants</small></article>
+        <article class="stat-card"><span class="stat-icon blue">▧</span><p>Documents pending</p><strong id="statDocs">0</strong><small>Need document verification</small></article>
+      </div>
+      <div class="content-grid">
+        <article class="panel"><div class="panel-heading"><div><h3>Recent applications</h3><p>Latest applicant activity</p></div><a class="text-link" href="#applications" data-go="applications">View all →</a></div><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Course</th><th>Status</th></tr></thead><tbody id="recentTable"></tbody></table></div></article>
+        <article class="panel quick-panel"><h3>Quick actions</h3><p>Common admission tasks</p><a class="quick-action" href="#register" data-go="register"><span>＋</span><div><b>New registration</b><small>Create an applicant profile</small></div><i>→</i></a><a class="quick-action" href="#review" data-go="review"><span>✓</span><div><b>Review applications</b><small>Check pending submissions</small></div><i>→</i></a><a class="quick-action" href="#merit" data-go="merit"><span>🏆</span><div><b>View merit list</b><small>Rank applicants by scores</small></div><i>→</i></a></article>
+      </div>
+    </section>
+
+    <section class="page-section" id="register">
+      <div class="section-intro"><div><p class="eyebrow">APPLICANT MANAGEMENT</p><h2>Student Registration</h2><p>Add a student profile and create an admission application.</p></div></div>
+      <form class="panel form-panel" id="registrationForm">
+        <h3>Personal information</h3>
+        <div class="form-grid">
+          <label>Student full name *<input name="name" required placeholder="e.g. Aarav Sharma"></label>
+          <label>Email address *<input name="email" type="email" required placeholder="student@example.com"></label>
+          <label>Phone number *<input name="phone" required inputmode="tel" placeholder="+91 98765 43210"></label>
+          <label>Date of birth *<input name="dob" type="date" required></label>
+          <label>Gender<select name="gender"><option value="">Select gender</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></label>
+          <label>Parent / guardian name *<input name="parent" required placeholder="Parent or guardian"></label>
+          <label>Parent phone *<input name="parentPhone" required inputmode="tel" placeholder="+91 98765 43210"></label>
+          <label>Applying for *<select name="course" required><option value="">Select course</option><option>Class 1 - 10 (CBSE)</option><option>Class 1 - 10 (ICSE)</option><option>Class 1 - 10 (State Board)</option><option>11th Science</option><option>11th Commerce</option><option>11th Arts</option></select></label>
+          <label>Previous academic score (%)<input name="academic" type="number" min="0" max="100" step="0.1" placeholder="e.g. 87.5"></label>
+          <label class="full-width">Address<textarea name="address" rows="3" placeholder="Enter current address"></textarea></label>
+        </div>
+        <div class="form-actions"><button type="reset" class="button button-secondary">Clear form</button><button type="submit" class="button button-primary">Save applicant →</button></div>
+      </form>
+    </section>
+
+    <section class="page-section" id="applications">
+      <div class="section-intro"><div><p class="eyebrow">APPLICATION MANAGEMENT</p><h2>Applications</h2><p>Search, filter, and review registered applicants.</p></div><button class="button button-primary" data-go="register">＋ New application</button></div>
+      <div class="panel">
+        <div class="toolbar"><input id="searchApplications" type="search" placeholder="Search by name, email, or ID…"><select id="statusFilter"><option value="">All statuses</option><option>Submitted</option><option>Under Review</option><option>Shortlisted</option><option>Merit List</option><option>Admitted</option><option>Rejected</option></select><select id="courseFilter"><option value="">All courses</option><option>Class 1 - 10 (CBSE)</option><option>Class 1 - 10 (ICSE)</option><option>Class 1 - 10 (State Board)</option><option>11th Science</option><option>11th Commerce</option><option>11th Arts</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>Application ID</th><th>Applicant</th><th>Course</th><th>Academic score</th><th>Status</th><th>Action</th></tr></thead><tbody id="applicationsTable"></tbody></table></div>
+        <p class="table-foot" id="applicationCount"></p>
+      </div>
+    </section>
+
+    <section class="page-section" id="documents">
+      <div class="section-intro"><div><p class="eyebrow">VERIFICATION</p><h2>Document Upload</h2><p>Attach demo files to an applicant and track verification status. Files are not uploaded to a server.</p></div></div>
+      <form class="panel form-panel" id="documentForm">
+        <div class="form-grid">
+          <label>Applicant *<select name="applicantId" id="documentApplicant" required></select></label>
+          <label>Document type *<select name="type" required><option value="">Choose document</option><option>Passport Size Photo</option><option>Birth Certificate</option><option>Previous Marksheet</option><option>Transfer Certificate</option><option>Identity Proof</option><option>Parent's ID Proof</option></select></label>
+          <label class="full-width">Choose file *<input type="file" name="file" required></label>
+        </div>
+        <p class="hint">Demo limitation: only the file name and verification status are stored in browser storage, not the file itself.</p>
+        <div class="form-actions"><button class="button button-primary" type="submit">Add document</button></div>
+      </form>
+      <div class="panel"><div class="panel-heading"><div><h3>Submitted documents</h3><p>Review uploaded document records</p></div></div><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Document</th><th>File name</th><th>Status</th><th>Action</th></tr></thead><tbody id="documentsTable"></tbody></table></div></div>
+    </section>
+
+    <section class="page-section" id="review">
+      <div class="section-intro"><div><p class="eyebrow">ADMISSION DECISIONS</p><h2>Application Review</h2><p>Update an applicant's status and add reviewer feedback.</p></div></div>
+      <div class="panel"><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Course</th><th>Score</th><th>Current status</th><th>Decision</th></tr></thead><tbody id="reviewTable"></tbody></table></div></div>
+    </section>
+
+    <section class="page-section" id="exams">
+      <div class="section-intro"><div><p class="eyebrow">ASSESSMENT</p><h2>Entrance Exams</h2><p>Record simulated entrance exam scores for applicants.</p></div></div>
+      <form class="panel form-panel" id="examForm"><div class="form-grid"><label>Applicant *<select name="applicantId" id="examApplicant" required></select></label><label>Exam / subject *<input name="subject" required placeholder="e.g. Mathematics entrance test"></label><label>Score (0–100) *<input name="score" type="number" min="0" max="100" required></label><label>Exam date *<input name="date" type="date" required></label></div><div class="form-actions"><button class="button button-primary">Save exam score</button></div></form>
+      <div class="panel"><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Exam / subject</th><th>Score</th><th>Date</th><th>Action</th></tr></thead><tbody id="examsTable"></tbody></table></div></div>
+    </section>
+
+    <section class="page-section" id="merit">
+      <div class="section-intro"><div><p class="eyebrow">RANKING</p><h2>Merit List</h2><p>Rank applicants using available academic and entrance scores.</p></div><button class="button button-primary" id="generateMerit">↻ Generate merit list</button></div>
+      <div class="notice">Demo calculation: merit score is the average of the academic score and the applicant's recorded entrance exam scores. If no exam score exists, the academic score is used.</div>
+      <div class="panel"><div class="table-wrap"><table><thead><tr><th>Rank</th><th>Applicant</th><th>Course</th><th>Academic score</th><th>Entrance average</th><th>Merit score</th><th>Status</th></tr></thead><tbody id="meritTable"></tbody></table></div></div>
+    </section>
+
+    <section class="page-section" id="admission">
+      <div class="section-intro"><div><p class="eyebrow">ENROLLMENT</p><h2>Admission Confirmation</h2><p>Confirm eligible applicants and print a simple admission letter.</p></div></div>
+      <div class="panel"><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Course</th><th>Status</th><th>Admission action</th></tr></thead><tbody id="admissionTable"></tbody></table></div></div>
+    </section>
+
+    <section class="page-section" id="fees">
+      <div class="section-intro"><div><p class="eyebrow">PAYMENTS</p><h2>Fee Management</h2><p>Record simulated fee payments. No real payments are processed.</p></div></div>
+      <form class="panel form-panel" id="feeForm"><div class="form-grid"><label>Applicant *<select name="applicantId" id="feeApplicant" required></select></label><label>Fee type *<select name="type" required><option value="">Choose fee type</option><option>Application Fee</option><option>Admission Fee</option><option>Tuition Fee</option><option>Other</option></select></label><label>Amount (₹) *<input name="amount" type="number" min="1" required placeholder="e.g. 1500"></label><label>Payment status *<select name="status" required><option>Pending</option><option>Paid</option></select></label></div><div class="form-actions"><button class="button button-primary">Save fee record</button></div></form>
+      <div class="panel"><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Fee type</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody id="feesTable"></tbody></table></div></div>
+    </section>
+
+    <section class="page-section" id="reports">
+      <div class="section-intro"><div><p class="eyebrow">DATA EXPORT</p><h2>Reports</h2><p>Export application records as CSV for reporting.</p></div></div>
+      <div class="stat-grid report-stats"><article class="stat-card"><p>Total applicants</p><strong id="reportTotal">0</strong></article><article class="stat-card"><p>Shortlisted</p><strong id="reportShortlisted">0</strong></article><article class="stat-card"><p>Rejected</p><strong id="reportRejected">0</strong></article><article class="stat-card"><p>Admitted</p><strong id="reportAdmitted">0</strong></article></div>
+      <div class="panel export-panel"><div><h3>Application report</h3><p>Includes applicant ID, contact, course, score, and status.</p></div><button class="button button-primary" id="exportCsv">⬇ Export CSV</button></div>
+    </section>
+
+    <footer class="footer">AdmitSchool · School Admission System <span>Frontend demonstration only</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
